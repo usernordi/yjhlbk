@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Личный сайт NORDIL — интересы, спорт, литература, технологии и проекты.">
+<meta name="theme-color" content="#090909">
+<title>NORDIL — Personal Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #090909;
+    --card: #111111;
+    --text: #f1f1f1;
+    --muted: #929292;
+    --line: #252525;
+    --accent: #c7a77a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1100px, 90%);
+    margin: auto;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(9,9,9,.88);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 12px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: -120px;
+    top: 15%;
+    background: var(--accent);
+    opacity: .07;
+    filter: blur(130px);
+    border-radius: 50%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    color: var(--accent);
+    letter-spacing: 5px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(65px, 13vw, 145px);
+    line-height: .95;
+    letter-spacing: -8px;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero-description {
+    max-width: 520px;
+    color: var(--muted);
+    line-height: 2;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.hero-bottom {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 27px;
+    background: var(--accent);
+    color: #090909;
+    font-size: 12px;
+    font-weight: 800;
+    border-radius: 3px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.secondary {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 110px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-label {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: clamp(35px, 5vw, 55px);
+    letter-spacing: -2px;
+    margin-bottom: 45px;
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+}
+
+.about-text {
+    color: var(--muted);
+    line-height: 2;
+    font-size: 14px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.info-list {
+    border-top: 1px solid var(--line);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+}
+
+.info-item span:first-child {
+    color: var(--muted);
+}
+
+.info-item span:last-child {
+    text-align: right;
+}
+
+/* INTERESTS */
+
+.interests {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.interest-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 30px;
+    min-height: 180px;
+    transition: .35s;
+}
+
+.interest-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--accent);
+}
+
+.interest-number {
+    color: var(--accent);
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+.interest-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.interest-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+/* SPORT */
+
+.sport-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.sport-description {
+    color: var(--muted);
+    line-height: 2;
+    font-size: 14px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.stat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 27px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 30px;
+    color: var(--accent);
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* BOOKS */
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.book {
+    padding: 30px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    transition: .3s;
+}
+
+.book:hover {
+    border-color: var(--accent);
+}
+
+.book small {
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-size: 10px;
+}
+
+.book h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin: 25px 0 12px;
+}
+
+.book p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* GOALS */
+
+.goals {
+    border-left: 1px solid var(--accent);
+    padding-left: 30px;
+}
+
+.goal {
+    margin-bottom: 30px;
+}
+
+.goal h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.goal p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* CONTACT */
+
+.contact-box {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.contact-box h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.contact-box p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width: 750px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #101010;
+        padding: 25px;
+        flex-direction: column;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+
+    .about-grid,
+    .sport-box {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .interests,
+    .books {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px;
+    }
+
+    .footer-inner {
+        gap: 15px;
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 450px) {
+    .interests,
+    .books {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section-title {
+        letter-spacing: -1px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="#" class="logo">N.</a>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#about">ОБО МНЕ</a>
+            <a href="#interests">ИНТЕРЕСЫ</a>
+            <a href="#sport">СПОРТ</a>
+            <a href="#books">КНИГИ</a>
+            <a href="#goals">ПЛАНЫ</a>
+            <a href="#contact">КОНТАКТЫ</a>
+        </div>
+
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="Открыть меню">☰</button>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container hero-content">
+        <div class="eyebrow">PERSONAL PORTFOLIO / 2026</div>
+
+        <h1>NOR<span>DIL</span></h1>
+
+        <p class="hero-description">
+            Человек с разносторонними интересами.
+            Спорт, литература, история, технологии
+            и постоянное желание узнавать что-то новое.
+        </p>
+
+        <div class="hero-bottom">
+            <a href="#about" class="btn">ПОЗНАКОМИТЬСЯ</a>
+            <a href="#interests" class="secondary">Исследовать сайт ↓</a>
+        </div>
+    </div>
+</header>
+
+<section id="about">
+    <div class="container reveal">
+        <div class="section-label">01 / ABOUT</div>
+        <h2 class="section-title">Немного обо мне.</h2>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    Меня зовут Нордил. Я школьник, интересующийся
+                    самыми разными направлениями: от спорта
+                    и литературы до технологий и юриспруденции.
+                </p>
+
+                <p>
+                    Мне нравится самостоятельно изучать новое,
+                    анализировать информацию, читать книги
+                    и формировать собственное мнение.
+                </p>
+
+                <p>
+                    Не стремлюсь ограничивать себя одним увлечением.
+                    Сейчас изучаю разные области и постепенно
+                    определяюсь с будущим направлением.
+                </p>
+            </div>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <span>Имя</span>
+                    <span>Нордил</span>
+                </div>
+                <div class="info-item">
+                    <span>Фамилия</span>
+                    <span>Добавить</span>
+                </div>
+                <div class="info-item">
+                    <span>Возраст</span>
+                    <span>14 лет</span>
+                </div>
+                <div class="info-item">
+                    <span>Дата рождения</span>
+                    <span>15.11.2012</span>
+                </div>
+                <div class="info-item">
+                    <span>Страна</span>
+                    <span>Узбекистан</span>
+                </div>
+                <div class="info-item">
+                    <span>Образование</span>
+                    <span>Школьник</span>
+                </div>
+                <div class="info-item">
+                    <span>Профессиональный интерес</span>
+                    <span>Юриспруденция</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="interests">
+    <div class="container reveal">
+        <div class="section-label">02 / INTERESTS</div>
+        <h2 class="section-title">Мои интересы.</h2>
+
+        <div class="interests">
+
+            <div class="interest-card">
+                <div class="interest-number">01 — LAW</div>
+                <h3>Право</h3>
+                <p>Юриспруденция, законодательство,
+                юридическое мышление и анализ законов.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">02 — HISTORY</div>
+                <h3>История</h3>
+                <p>Исторические события, цивилизации,
+                государства и политические процессы.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">03 — LITERATURE</div>
+                <h3>Литература</h3>
+                <p>Русская классика, философские темы,
+                чтение и собственные тексты.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">04 — SPORT</div>
+                <h3>Спорт</h3>
+                <p>Триатлон, бег, плавание, велосипед
+                и физическая активность.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">05 — MUSIC</div>
+                <h3>Музыка</h3>
+                <p>Игра на гитаре, музыкальные
+                эксперименты и новые композиции.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">06 — TECHNOLOGY</div>
+                <h3>Технологии</h3>
+                <p>Компьютеры, программирование,
+                игровые технологии и цифровые проекты.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">07 — COOKING</div>
+                <h3>Кулинария</h3>
+                <p>Приготовление блюд, эксперименты
+                с рецептами и новыми вкусами.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">08 — CYCLING</div>
+                <h3>Велосипеды</h3>
+                <p>Шоссейный велоспорт, поездки,
+                скорость и техника.</p>
+            </div>
+
+            <div class="interest-card">
+                <div class="interest-number">09 — GAMING</div>
+                <h3>Игры</h3>
+                <p>Компьютерные игры, гоночные симуляторы
+                и игровые проекты.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="sport">
+    <div class="container reveal">
+        <div class="section-label">03 / SPORT</div>
+        <h2 class="section-title">Спортивная сторона.</h2>
+
+        <div class="sport-box">
+            <div class="sport-description">
+                <p>
+                    Спорт занимает значительную часть моей жизни.
+                    Несколько лет занимался триатлоном, участвовал
+                    в соревнованиях и развивал выносливость.
+                </p>
+                <br>
+                <p>
+                    Сейчас интересуюсь бегом, велосипедными
+                    поездками и самостоятельными тренировками.
+                    Мне нравится измерять прогресс и проверять
+                    собственные возможности.
+                </p>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <strong>13.00</strong>
+                    <span>100 МЕТРОВ, РУЧНОЙ ЗАМЕР</span>
+                </div>
+                <div class="stat">
+                    <strong>3 года</strong>
+                    <span>ЗАНЯТИЙ ТРИАТЛОНОМ</span>
+                </div>
+                <div class="stat">
+                    <strong>II</strong>
+                    <span>ЮНОШЕСКИЙ РАЗРЯД ПО ТРИАТЛОНУ</span>
+                </div>
+                <div class="stat">
+                    <strong>3 место</strong>
+                    <span>СПОРТИВНЫЕ СОРЕВНОВАНИЯ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="books">
+    <div class="container reveal">
+        <div class="section-label">04 / LITERATURE</div>
+        <h2 class="section-title">Прочитанное.</h2>
+
+        <div class="books">
+
+            <div class="book">
+                <small>МИХАИЛ ЛЕРМОНТОВ</small>
+                <h3>Герой нашего времени</h3>
+                <p>Психология человека, противоречия
+                личности и общество.</p>
+            </div>
+
+            <div class="book">
+                <small>НИКОЛАЙ ГОГОЛЬ</small>
+                <h3>Мёртвые души</h3>
+                <p>Сатира, человеческие пороки
+                и устройство общества.</p>
+            </div>
+
+            <div class="book">
+                <small>МИХАИЛ БУЛГАКОВ</small>
+                <h3>Морфий</h3>
+                <p>Психологическая проза
+                и трагедия человеческой зависимости.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="goals">
+    <div class="container reveal">
+        <div class="section-label">05 / FUTURE</div>
+        <h2 class="section-title">Взгляд в будущее.</h2>
+
+        <div class="goals">
+
+            <div class="goal">
+                <h3>Юриспруденция</h3>
+                <p>Получить качественное юридическое образование
+                и развиваться в сфере права.</p>
+            </div>
+
+            <div class="goal">
+                <h3>Германия</h3>
+                <p>Изучать немецкий язык и рассматривать
+                возможность дальнейшего образования в Германии.</p>
+            </div>
+
+            <div class="goal">
+                <h3>Саморазвитие</h3>
+                <p>Расширять кругозор, изучать новые дисциплины
+                и развивать критическое мышление.</p>
+            </div>
+
+            <div class="goal">
+                <h3>Собственные проекты</h3>
+                <p>Создавать цифровые проекты, развивать навыки
+                и пробовать себя в предпринимательстве.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container reveal">
+        <div class="section-label">06 / CONTACT</div>
+
+        <div class="contact-box">
+            <div>
+                <h2>Связаться со мной.</h2>
+                <p>Мои проекты и личные контакты.</p>
+            </div>
+
+            <a href="https://t.me/+uAvXSv6aPI"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn">
+                TELEGRAM ↗
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-inner">
+        <span>© 2026 NORDIL. PERSONAL WEBSITE.</span>
+        <span>DESIGNED WITH PURPOSE.</span>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+    });
+});
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => {
+    observer.observe(element);
+});
+</script>
+
+</body>
+</html>
